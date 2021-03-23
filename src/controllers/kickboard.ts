@@ -66,20 +66,6 @@ export default class Kickboard {
       });
     });
 
-    console.log(
-      JSON.stringify({
-        type: 'FeatureCollection',
-        features: results.map(({ lat, lng }) => ({
-          type: 'Feature',
-          properties: {},
-          geometry: {
-            type: 'Point',
-            coordinates: [lng, lat],
-          },
-        })),
-      })
-    );
-
     return results;
   }
 }
