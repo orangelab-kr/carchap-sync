@@ -1,4 +1,4 @@
-import { InternalError, logger } from '.';
+import { InternalError } from '.';
 
 export type Callback = (
   event: any,
@@ -18,13 +18,8 @@ export type ResponseCallback = (
 export function Wrapper(cb: Callback): Callback {
   return async function (event, context, callback) {
     try {
-      return await cb(event, context, callback);
+      return cb(event, context, callback);
     } catch (err) {
-      if (process.env.NODE_ENV !== 'prod') {
-        logger.error(err.message);
-        logger.error(err.stack);
-      }
-
       let statusCode = 500;
       let message = '알 수 없는 오류가 발생했습니다.';
 

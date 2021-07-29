@@ -31,7 +31,7 @@ custom:
 
 functions:
   app:
-    handler: dist/index.handler
+    handler: src/index.handler
     events:
       - http:
           path: /
