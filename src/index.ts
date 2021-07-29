@@ -1,14 +1,11 @@
 import os from 'os';
-import { Kickboard, MongoDB, OPCODE, Wrapper } from '.';
+import { Kickboard, OPCODE, Wrapper } from '.';
 
 export * from './controllers';
-export * from './models';
 export * from './tools';
 
 const hostname = os.hostname();
 export const handler = Wrapper(async (event, context, cb) => {
-  await MongoDB.init();
-
   const { queryStringParameters } = event;
   if (
     !queryStringParameters ||
