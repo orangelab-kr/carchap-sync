@@ -1,7 +1,7 @@
 import admin from 'firebase-admin';
-import firestore from '../tools/firestore';
+import { firestore } from '..';
 
-export default class Kickboard {
+export class Kickboard {
   public static async getKickboards(
     latitude: number,
     longitude: number

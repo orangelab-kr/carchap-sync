@@ -1,13 +1,12 @@
-import InternalError from './error';
-import logger from './logger';
+import { InternalError, logger } from '.';
 
-type Callback = (
+export type Callback = (
   event: any,
   context: any,
   callback: ResponseCallback
 ) => Promise<unknown>;
 
-type ResponseCallback = (
+export type ResponseCallback = (
   err: Error | null,
   res: {
     statusCode?: number;
@@ -16,12 +15,12 @@ type ResponseCallback = (
   }
 ) => Promise<unknown>;
 
-export default function Wrapper(cb: Callback): Callback {
+export function Wrapper(cb: Callback): Callback {
   return async function (event, context, callback) {
     try {
       return await cb(event, context, callback);
     } catch (err) {
-      if (process.env.NODE_ENV === 'dev') {
+      if (process.env.NODE_ENV !== 'prod') {
         logger.error(err.message);
         logger.error(err.stack);
       }

@@ -1,4 +1,4 @@
-export default class InternalError extends Error {
+export class InternalError extends Error {
   public status: number;
   public name = 'InternalError';
 

@@ -1,10 +1,8 @@
-import { OPCODE, Wrapper } from './tools';
-
-import { Kickboard } from './controllers';
-import dotenv from 'dotenv';
 import os from 'os';
+import { Kickboard, OPCODE, Wrapper } from '.';
 
-if (process.env.NODE_ENV === 'dev') dotenv.config();
+export * from './controllers';
+export * from './tools';
 
 const hostname = os.hostname();
 export const handler = Wrapper(async (event, context, cb) => {

@@ -1,1 +1,1 @@
-export { default as Kickboard } from './kickboard';
+export * from './kickboard';

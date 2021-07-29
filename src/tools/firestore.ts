@@ -5,4 +5,4 @@ admin.initializeApp({
   credential: admin.credential.cert(require('../../serviceAccountKey.json')),
 });
 
-export default admin.firestore();
+export const firestore = admin.firestore();
