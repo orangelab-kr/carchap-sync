@@ -1,11 +1,11 @@
 service: 'hikick-carchap-sync'
-useDotenv: false
+useDotenv: true
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs14.x
   region: ap-northeast-2
-  stage: ${opt:stage, 'dev'}
+  stage: stage
   lambdaHashingVersion: '20201221'
   apiGateway:
     shouldStartNameWithService: true
@@ -15,7 +15,7 @@ package:
 
 plugins:
   - serverless-webpack
-  - serverless-dotenv-plugin
+  - serverless-doppler
   - serverless-offline
 
 custom:
@@ -32,5 +32,5 @@ functions:
     handler: src/index.handler
     events:
       - http:
-          path: /
-          method: get
+          method: ANY
+          path: '{proxy+}'

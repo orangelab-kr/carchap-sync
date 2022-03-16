@@ -58,8 +58,8 @@ export class Kickboard {
           lng: kickboard.status.gps.longitude,
           battery: kickboard.status.power.scooter.battery,
           hasHelmet: !!kickboard.helmetId,
-          baseMinute: 5,
-          basePrice: 1200,
+          baseMinute: 0,
+          basePrice: 1000,
           extraMinute: 1,
           extraPrice: 180,
         }))
